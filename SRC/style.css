@@ -88,3 +88,15 @@ h2 {
 .card {
   border-color: rgba(128, 128, 128, 0.068);
 }
+
+footer {
+  margin: 15px 0px 5px 5px;
+  letter-spacing: 2px;
+  text-align: center;
+  max-width: 600px;
+  margin-left: 8%;
+}
+
+a:link {
+  text-decoration: none;
+}
