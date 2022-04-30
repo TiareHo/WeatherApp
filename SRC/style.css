@@ -1,0 +1,90 @@
+h1,
+h2 {
+  margin: 15px 0px 5px 5px;
+  font-size: 150%;
+  font-weight: 200;
+  letter-spacing: 5px;
+  text-align: center;
+}
+.form-control {
+  font-weight: 600;
+  border-color: rgb(170, 247, 236);
+  border-radius: 6px;
+  font-size: 0.6cm;
+  font-family: "Montserrat", sans-serif;
+  opacity: 50%;
+}
+
+.form-control:hover {
+  border-width: 3px;
+  transition: ease-in-out 400ms;
+}
+.date,
+.display-city {
+  letter-spacing: 5px;
+  font-weight: 500;
+  color: rgb(95, 158, 160);
+  text-transform: uppercase;
+  margin-bottom: 10px;
+  display: inline;
+}
+.btn {
+  border-radius: 5px;
+  border-color: rgb(170, 247, 236);
+  background-color: rgba(170, 247, 236, 0.342);
+}
+.btn:hover {
+  font-weight: 700;
+  transition: ease-in-out 300ms;
+  color: teal;
+  background-color: azure;
+}
+
+.figure {
+  color: hsl(32, 100%, 56%);
+  font-weight: 700;
+  float: right;
+}
+.current-temp {
+  color: hsl(32, 100%, 56%);
+  font-weight: 900;
+  font-size: 100px;
+  text-align: right;
+}
+
+.current-temp-units {
+  font-size: 30px;
+  text-decoration: none;
+  font-weight: 400;
+}
+
+.fahrenheit-link {
+  text-decoration: none;
+  color: hsl(32, 100%, 56%);
+  vertical-align: 85%;
+}
+
+.container {
+  max-width: 600px;
+  margin-left: 8%;
+}
+.current-conditions {
+  border-color: cadetblue;
+  border-style: solid;
+  border-width: 1px;
+  padding: 15px 0px 0px 0px;
+  background-color: rgb(246, 248, 248);
+}
+.future-conditions {
+  border-color: rgb(95, 158, 160);
+  border-style: solid;
+  border-width: 1px;
+  background-color: rgb(246, 248, 248);
+}
+.card-text {
+  text-align: center;
+  color: grey;
+}
+.card {
+  border-color: rgba(128, 128, 128, 0.068);
+}
