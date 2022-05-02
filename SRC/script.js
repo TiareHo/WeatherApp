@@ -37,8 +37,14 @@ function getApi(event) {
     windNow.innerHTML = currentWind + " mph";
     skyNow.innerHTML = currentSky;
 
-    console.log(response.data);
+    console.log(response);
   }
+}
+
+function showSwell(response) {
+  let waveHeight = response.data[0].name;
+  let waveNow = document.querySelector("#bouy");
+  waveNow.innerHTML = waveHeight;
 }
 
 //move all date conversion into a function for cleaner code??
@@ -73,3 +79,7 @@ form.addEventListener("submit", check);
 
 let city = document.querySelector("#city-check");
 city.addEventListener("submit", getApi);
+
+//testing buoy data
+let harvestUrl = "https://jsonplaceholder.typicode.com/users";
+axios.get(harvestUrl).then(showSwell);
