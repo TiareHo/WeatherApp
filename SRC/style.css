@@ -1,5 +1,6 @@
 h1,
-h2 {
+h2,
+h3 {
   margin: 15px 0px 5px 5px;
   font-size: 150%;
   font-weight: 200;
@@ -64,11 +65,13 @@ h2 {
   vertical-align: 85%;
 }
 
-.container {
+.container,
+.wave-graph {
   max-width: 600px;
   margin-left: 8%;
 }
-.current-conditions {
+.current-conditions,
+.buoy {
   border-color: cadetblue;
   border-style: solid;
   border-width: 1px;
@@ -81,6 +84,9 @@ h2 {
   border-width: 1px;
   background-color: rgb(246, 248, 248);
 }
+.sm {
+  display: inline;
+}
 .card-text {
   text-align: center;
   color: grey;
@@ -88,9 +94,13 @@ h2 {
 .card {
   border-color: rgba(128, 128, 128, 0.068);
 }
+.wave-graph {
+  float: right;
+  margin-top: 0%;
+  margin-bottom: 10%;
+}
 
-footer,
-p {
+footer {
   margin: 15px 0px 5px 5px;
   letter-spacing: 2px;
   text-align: center;

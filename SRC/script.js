@@ -42,7 +42,8 @@ function getApi(event) {
 }
 
 function showSwell(response) {
-  let waveHeight = response.data[0].name;
+  let waveHeight =
+    response.body.contentdiv.contenttable.tbody[6].tr[0].contentarea.h1;
   let waveNow = document.querySelector("#bouy");
   waveNow.innerHTML = waveHeight;
 }
@@ -81,5 +82,5 @@ let city = document.querySelector("#city-check");
 city.addEventListener("submit", getApi);
 
 //testing buoy data
-let harvestUrl = "https://jsonplaceholder.typicode.com/users";
+let harvestUrl = "https://www.ndbc.noaa.gov/station_page.php?station=46218";
 axios.get(harvestUrl).then(showSwell);
