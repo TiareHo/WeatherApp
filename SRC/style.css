@@ -34,6 +34,7 @@ h4 {
   border-radius: 5px;
   border-color: rgb(170, 247, 236);
   background-color: rgba(170, 247, 236, 0.342);
+  margin: 0px 10px 0px 0px;
 }
 .btn:hover {
   font-weight: 700;
@@ -48,22 +49,17 @@ h4 {
   float: right;
 }
 .current-temp {
-  color: hsl(32, 100%, 56%);
-  font-weight: 900;
+  color: rgb(95, 158, 160);
+  font-weight: 100;
   font-size: 100px;
-  text-align: right;
+  margin: -10px 0px 0px 40px;
 }
 
 .current-temp-units {
+  position: relative;
   font-size: 30px;
-  text-decoration: none;
-  font-weight: 400;
-}
-
-.fahrenheit-link {
-  text-decoration: none;
-  color: hsl(32, 100%, 56%);
-  vertical-align: 85%;
+  font-weight: 200;
+  top: -50px;
 }
 
 .container,
