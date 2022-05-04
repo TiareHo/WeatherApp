@@ -14,13 +14,17 @@ h4 {
   border-radius: 6px;
   font-size: 0.6cm;
   font-family: "Montserrat", sans-serif;
-  opacity: 50%;
+  opacity: 70%;
+  color: rgb(95, 158, 160);
 }
 
 .form-control:hover {
   border-width: 3px;
   transition: ease-in-out 400ms;
+  color: rgb(95, 158, 160);
+  border-color: aquamarine;
 }
+
 .date,
 .display-city {
   letter-spacing: 5px;
@@ -42,12 +46,15 @@ h4 {
   color: teal;
   background-color: azure;
 }
-
+#cloud {
+  text-transform: capitalize;
+}
 .figure {
   color: hsl(32, 100%, 56%);
   font-weight: 700;
   float: right;
 }
+
 .current-temp {
   color: rgb(95, 158, 160);
   font-weight: 100;

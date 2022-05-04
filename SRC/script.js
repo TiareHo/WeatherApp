@@ -23,6 +23,9 @@ function getApi(event) {
     let currentTemp = Math.round(response.data.main.temp);
     let tempNow = document.querySelector("#tempNow");
 
+    let minTemp = Math.round(response.data.main.temp_min);
+    let minNow = document.querySelector("#min-temp");
+
     let currentHumidity = Math.round(response.data.main.humidity);
     let humidityNow = document.querySelector("#humidity");
 
@@ -33,6 +36,10 @@ function getApi(event) {
     let skyNow = document.querySelector("#cloud");
 
     tempNow.innerHTML = currentTemp;
+    minNow.innerHTML = minTemp;
+    document.querySelector("#max-temp").innerHTML = Math.round(
+      response.data.main.temp_max
+    );
     humidityNow.innerHTML = currentHumidity + "%";
     windNow.innerHTML = currentWind + " mph";
     skyNow.innerHTML = currentSky;
