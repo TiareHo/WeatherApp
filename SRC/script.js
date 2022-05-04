@@ -40,6 +40,8 @@ function getApi(event) {
     let dateNow = document.querySelector("#date-now");
 
     let justChecked = document.querySelector("div.display-city");
+    let icon = document.querySelector("#bgimg");
+    let emoji = response.data.weather[0].icon;
 
     let currentTemp = Math.round(response.data.main.temp);
     let tempNow = document.querySelector("#tempNow");
@@ -58,6 +60,11 @@ function getApi(event) {
 
     dateNow.innerHTML = formatDate(timestamp);
     justChecked.innerHTML = city.value + " weather as of ";
+    icon.setAttribute(
+      "src",
+      "http://openweathermap.org/img/wn/" + emoji + "@2x.png"
+    );
+    icon.setAttribute("alt", response.data.weather[0].main);
     tempNow.innerHTML = currentTemp;
     minNow.innerHTML = minTemp;
     document.querySelector("#max-temp").innerHTML = Math.round(
