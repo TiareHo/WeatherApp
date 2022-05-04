@@ -22,63 +22,65 @@ function formatDate(timestamp) {
   return time + ":" + minute + " " + day + ":";
 }
 
-//Current weather from OpenWeather Function:
+//function to send searched city name to main showWeather:
 
-function getApi(event) {
+function handleSearch(event) {
   event.preventDefault();
-  let apiKey = "032e8a8762076f19419119384173a976";
-  let apiUrl = "https://api.openweathermap.org/data/2.5/weather?q=";
-  //city needs to be input value from user
   let city = document.querySelector("#user-typed");
-
-  axios
-    .get(apiUrl + city.value + "&appid=" + apiKey + "&units=imperial")
-    .then(showWeather);
-
-  function showWeather(response) {
-    let timestamp = response.data.dt * 1000;
-    let dateNow = document.querySelector("#date-now");
-
-    let justChecked = document.querySelector("div.display-city");
-    let icon = document.querySelector("#bgimg");
-    let emoji = response.data.weather[0].icon;
-
-    let currentTemp = Math.round(response.data.main.temp);
-    let tempNow = document.querySelector("#tempNow");
-
-    let minTemp = Math.round(response.data.main.temp_min);
-    let minNow = document.querySelector("#min-temp");
-
-    let currentHumidity = Math.round(response.data.main.humidity);
-    let humidityNow = document.querySelector("#humidity");
-
-    let currentWind = Math.round(response.data.wind.speed);
-    let windNow = document.querySelector("#wind");
-
-    let currentSky = response.data.weather[0].description;
-    let skyNow = document.querySelector("#cloud");
-
-    dateNow.innerHTML = formatDate(timestamp);
-    justChecked.innerHTML = city.value + " weather as of ";
-    icon.setAttribute(
-      "src",
-      "http://openweathermap.org/img/wn/" + emoji + "@2x.png"
-    );
-    icon.setAttribute("alt", response.data.weather[0].main);
-    tempNow.innerHTML = currentTemp;
-    minNow.innerHTML = minTemp;
-    document.querySelector("#max-temp").innerHTML = Math.round(
-      response.data.main.temp_max
-    );
-    humidityNow.innerHTML = currentHumidity + "%";
-    windNow.innerHTML = currentWind + " mph";
-    skyNow.innerHTML = currentSky;
-
-    console.log(response);
-  }
+  getResponse(city.value);
 }
 
-// get current data from OpenWeather
+function getResponse(city) {
+  let apiKey = "032e8a8762076f19419119384173a976";
+  let apiUrl = "https://api.openweathermap.org/data/2.5/weather?q=";
+  //city needs to be input value from user?
+  axios
+    .get(apiUrl + city + "&appid=" + apiKey + "&units=imperial")
+    .then(showWeather);
+}
 
-let city = document.querySelector("#city-check");
-city.addEventListener("submit", getApi);
+function showWeather(response) {
+  let timestamp = response.data.dt * 1000;
+  let dateNow = document.querySelector("#date-now");
+
+  let justChecked = document.querySelector("div.display-city");
+  let city = document.querySelector("#user-typed");
+  let icon = document.querySelector("#bgimg");
+  let emoji = response.data.weather[0].icon;
+
+  let currentTemp = Math.round(response.data.main.temp);
+  let tempNow = document.querySelector("#tempNow");
+
+  let minTemp = Math.round(response.data.main.temp_min);
+  let minNow = document.querySelector("#min-temp");
+
+  let currentHumidity = Math.round(response.data.main.humidity);
+  let humidityNow = document.querySelector("#humidity");
+
+  let currentWind = Math.round(response.data.wind.speed);
+  let windNow = document.querySelector("#wind");
+
+  let currentSky = response.data.weather[0].description;
+  let skyNow = document.querySelector("#cloud");
+
+  dateNow.innerHTML = formatDate(timestamp);
+  justChecked.innerHTML = city.value + " weather as of ";
+  icon.setAttribute(
+    "src",
+    "http://openweathermap.org/img/wn/" + emoji + "@2x.png"
+  );
+  icon.setAttribute("alt", response.data.weather[0].main);
+  tempNow.innerHTML = currentTemp;
+  minNow.innerHTML = minTemp;
+  document.querySelector("#max-temp").innerHTML = Math.round(
+    response.data.main.temp_max
+  );
+  humidityNow.innerHTML = currentHumidity + "%";
+  windNow.innerHTML = currentWind + " mph";
+  skyNow.innerHTML = currentSky;
+}
+let city = "Santa Barbara";
+getResponse(city);
+// glistens for user input to begin function response chain
+let search = document.querySelector("#city-check");
+search.addEventListener("submit", handleSearch);
