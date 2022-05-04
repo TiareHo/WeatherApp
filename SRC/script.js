@@ -4,7 +4,31 @@ function check(event) {
   let justChecked = document.querySelector("div.display-city");
   let userSearched = document.querySelector("#user-typed");
 
-  justChecked.innerHTML = " in " + userSearched.value;
+  justChecked.innerHTML = userSearched.value + " weather as of ";
+}
+
+function formatDate(timestamp) {
+  let now = new Date(timestamp);
+
+  let days = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friyay!",
+    "Saturday",
+  ];
+  let day = days[now.getDay()];
+  let time = now.getHours();
+  if (time <= 9) {
+    time = "0" + time;
+  }
+  let minute = now.getMinutes();
+  if (minute <= 9) {
+    minute = "0" + time;
+  }
+  return time + ":" + minute + " " + day + ":";
 }
 
 //Current weather from OpenWeather Function:
@@ -20,6 +44,9 @@ function getApi(event) {
     .then(showWeather);
 
   function showWeather(response) {
+    let timestamp = response.data.dt * 1000;
+    let dateNow = document.querySelector("#date-now");
+
     let currentTemp = Math.round(response.data.main.temp);
     let tempNow = document.querySelector("#tempNow");
 
@@ -35,6 +62,7 @@ function getApi(event) {
     let currentSky = response.data.weather[0].description;
     let skyNow = document.querySelector("#cloud");
 
+    dateNow.innerHTML = formatDate(timestamp);
     tempNow.innerHTML = currentTemp;
     minNow.innerHTML = minTemp;
     document.querySelector("#max-temp").innerHTML = Math.round(
@@ -45,49 +73,17 @@ function getApi(event) {
     skyNow.innerHTML = currentSky;
 
     console.log(response);
+    console.log(response.data.dt);
   }
-}
-
-function showSwell(response) {
-  let waveHeight =
-    response.body.contentdiv.contenttable.tbody[6].tr[0].contentarea.h1;
-  let waveNow = document.querySelector("#bouy");
-  waveNow.innerHTML = waveHeight;
 }
 
 //move all date conversion into a function for cleaner code??
 //need to update date/time based on current searched location-does open weather have element?
-let now = new Date();
-
-let days = [
-  "Sunday",
-  "Monday",
-  "Tuesday",
-  "Wednesday",
-  "Thursday",
-  "Friyay!",
-  "Saturday",
-];
-let day = days[now.getDay()];
-let time = now.getHours();
-if (time < 10) {
-  time = "0" + time;
-}
-let minute = now.getMinutes();
-if (minute < 10) {
-  minute = "0" + time;
-}
-let date = document.querySelector("div.date");
-date.innerHTML = day + " " + time + ":" + minute + " ";
-
-let form = document.querySelector("#city-check");
-form.addEventListener("submit", check);
 
 // get current data from OpenWeather
 
 let city = document.querySelector("#city-check");
 city.addEventListener("submit", getApi);
 
-//testing buoy data
-let harvestUrl = "https://www.ndbc.noaa.gov/station_page.php?station=46218";
-axios.get(harvestUrl).then(showSwell);
+let form = document.querySelector("#city-check");
+form.addEventListener("submit", check);
