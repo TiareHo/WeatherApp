@@ -1,12 +1,3 @@
-// display city name at top with date
-function check(event) {
-  event.preventDefault();
-  let justChecked = document.querySelector("div.display-city");
-  let userSearched = document.querySelector("#user-typed");
-
-  justChecked.innerHTML = userSearched.value + " weather as of ";
-}
-
 function formatDate(timestamp) {
   let now = new Date(timestamp);
 
@@ -34,10 +25,11 @@ function formatDate(timestamp) {
 //Current weather from OpenWeather Function:
 
 function getApi(event) {
+  event.preventDefault();
   let apiKey = "032e8a8762076f19419119384173a976";
   let apiUrl = "https://api.openweathermap.org/data/2.5/weather?q=";
   //city needs to be input value from user
-  city = document.querySelector("#user-typed");
+  let city = document.querySelector("#user-typed");
 
   axios
     .get(apiUrl + city.value + "&appid=" + apiKey + "&units=imperial")
@@ -46,6 +38,8 @@ function getApi(event) {
   function showWeather(response) {
     let timestamp = response.data.dt * 1000;
     let dateNow = document.querySelector("#date-now");
+
+    let justChecked = document.querySelector("div.display-city");
 
     let currentTemp = Math.round(response.data.main.temp);
     let tempNow = document.querySelector("#tempNow");
@@ -63,6 +57,7 @@ function getApi(event) {
     let skyNow = document.querySelector("#cloud");
 
     dateNow.innerHTML = formatDate(timestamp);
+    justChecked.innerHTML = city.value + " weather as of ";
     tempNow.innerHTML = currentTemp;
     minNow.innerHTML = minTemp;
     document.querySelector("#max-temp").innerHTML = Math.round(
@@ -73,17 +68,10 @@ function getApi(event) {
     skyNow.innerHTML = currentSky;
 
     console.log(response);
-    console.log(response.data.dt);
   }
 }
-
-//move all date conversion into a function for cleaner code??
-//need to update date/time based on current searched location-does open weather have element?
 
 // get current data from OpenWeather
 
 let city = document.querySelector("#city-check");
 city.addEventListener("submit", getApi);
-
-let form = document.querySelector("#city-check");
-form.addEventListener("submit", check);
