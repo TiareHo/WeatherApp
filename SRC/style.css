@@ -8,6 +8,7 @@ h4 {
   letter-spacing: 5px;
   text-align: center;
 }
+
 .form-control {
   font-weight: 600;
   border-color: rgb(170, 247, 236);
@@ -30,7 +31,7 @@ h4 {
 .display-city {
   letter-spacing: 5px;
   font-weight: 600;
-  color: rgb(77, 123, 124);
+  color: rgb(255, 251, 251);
   text-transform: uppercase;
   margin-left: -20%;
   text-align: center;
@@ -44,28 +45,38 @@ h4 {
   border-color: rgb(170, 247, 236);
   background-color: rgba(170, 247, 236, 0.342);
   margin: 0px 10px 0px 0px;
+  color: whitesmoke;
+  font-weight: 200;
 }
 .btn:hover {
   font-weight: 700;
   transition: ease-in-out 300ms;
-  color: teal;
+  color: rgb(218, 102, 25);
   background-color: azure;
 }
+
+.table,
+.row {
+  color: #e9ecef;
+  font-weight: 450;
+}
+
 #cloud {
   text-transform: capitalize;
   text-align: center;
   margin-top: 0px;
-  color: hsl(32, 100%, 56%);
+  color: hsl(32, 100%, 74%);
   font-weight: 700;
 }
+
 .figure {
-  color: hsl(32, 100%, 56%);
+  color: hsl(32, 100%, 93%);
   font-weight: 700;
   float: right;
 }
 
 .temp-number {
-  color: rgb(95, 158, 160);
+  color: #e9ecef;
   font-weight: 100;
   font-size: 100px;
   margin: 0px 2px 10px 50px;
@@ -73,7 +84,7 @@ h4 {
 }
 .current-temp-units {
   position: relative;
-  color: rgb(95, 158, 160);
+  color: #e9ecef;
   font-size: 30px;
   font-weight: 200;
   top: -50px;
@@ -90,7 +101,7 @@ h4 {
   border-style: solid;
   border-width: 1px;
   padding: 15px 0px 0px 0px;
-  background-color: rgb(195, 218, 218);
+  background-color: rgb(117, 150, 150);
   border-radius: 5px;
 }
 .future-conditions {
