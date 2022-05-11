@@ -83,11 +83,13 @@ function showWeather(response) {
 
 function showForecast() {
   let forecast = document.querySelector("#future-conditions-javascript");
-  forecast.innerHTML = `
-  <h3> CRYSTAL BALL READINGS </h3>
-  <div class="row">
-     <div class="sm col-3">
-        <div class="forecast-day"> TODAY </div>
+  let forecastHTML = `<h3> CRYSTAL BALL READINGS </h3> <div class="row">`;
+  let days = ["TODAY", "TOMORROW", "NEXT DAY", "WHATEVER"];
+  days.forEach(function (day) {
+    forecastHTML =
+      forecastHTML +
+      `<div class="sm col-3">
+        <div class="forecast-day"> ${day} </div>
            <img
              src="https://ssl.gstatic.com/onebox/weather/48/sunny.png"
               alt="weather image"
@@ -95,13 +97,12 @@ function showForecast() {
              <div id="future-temps">
               <span id="future-temp-high"> 68°F | </span><span id-"future-temp-low">39°F </span>
         </div>     
-     </div>
-  </div>
-
-            
+     </div>         
 `;
+  });
+  forecastHTML = forecastHTML + `</div>`;
+  forecast.innerHTML = forecastHTML;
 }
-
 let city = "Santa Barbara";
 getResponse(city);
 // glistens for user input to begin function response chain
