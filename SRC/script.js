@@ -36,7 +36,8 @@ function getResponse(city) {
   //city needs to be input value from user?
   axios
     .get(apiUrl + city + "&appid=" + apiKey + "&units=imperial")
-    .then(showWeather);
+    .then(showWeather)
+    .then(showForecast);
 }
 
 function showWeather(response) {
@@ -79,6 +80,12 @@ function showWeather(response) {
   windNow.innerHTML = currentWind + " mph";
   skyNow.innerHTML = currentSky;
 }
+
+function showForecast() {
+  let forecast = document.querySelector("#future-conditions-javascript");
+  forecast.innerHTML = "hello, testing 123";
+}
+
 let city = "Santa Barbara";
 getResponse(city);
 // glistens for user input to begin function response chain
