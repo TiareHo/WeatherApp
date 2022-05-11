@@ -83,7 +83,23 @@ function showWeather(response) {
 
 function showForecast() {
   let forecast = document.querySelector("#future-conditions-javascript");
-  forecast.innerHTML = "hello, testing 123";
+  forecast.innerHTML = `
+  <h3> CRYSTAL BALL READINGS </h3>
+  <div class="row">
+     <div class="sm col-3">
+        <div class="forecast-day"> TODAY </div>
+           <img
+             src="https://ssl.gstatic.com/onebox/weather/48/sunny.png"
+              alt="weather image"
+             />
+             <div id="future-temps">
+              <span id="future-temp-high"> 68°F | </span><span id-"future-temp-low">39°F </span>
+        </div>     
+     </div>
+  </div>
+
+            
+`;
 }
 
 let city = "Santa Barbara";
