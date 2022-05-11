@@ -108,14 +108,11 @@ h4 {
   border-color: rgb(95, 158, 160);
   border-style: solid;
   border-width: 1px;
-  background-color: rgb(246, 248, 248);
   border-radius: 5px;
-}
-
-.card-text {
   text-align: center;
   color: grey;
 }
+
 .card {
   border-color: rgba(128, 128, 128, 0.068);
 }

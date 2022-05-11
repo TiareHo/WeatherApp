@@ -83,7 +83,7 @@ function showWeather(response) {
 
 function showForecast() {
   let forecast = document.querySelector("#future-conditions-javascript");
-  let forecastHTML = `<h3> CRYSTAL BALL READINGS </h3> <div class="row">`;
+  let forecastHTML = `<h3> CRYSTAL BALL READINGS </h3> <div class="row future-conditions">`;
   let days = ["TODAY", "TOMORROW", "NEXT DAY", "WHATEVER"];
   days.forEach(function (day) {
     forecastHTML =
