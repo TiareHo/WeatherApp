@@ -79,6 +79,8 @@ function showWeather(response) {
   humidityNow.innerHTML = currentHumidity + "%";
   windNow.innerHTML = currentWind + " mph";
   skyNow.innerHTML = currentSky;
+
+  getForecast(response.data.coord);
 }
 
 function showForecast() {
@@ -102,6 +104,18 @@ function showForecast() {
   });
   forecastHTML = forecastHTML + `</div>`;
   forecast.innerHTML = forecastHTML;
+}
+
+function getForecast(coord) {
+  let lat = coord.lat;
+  let lon = coord.lon;
+
+  console.log(lon + "," + lat);
+  let apiKey = "398e05bad3172be5f1fd3b3b7b027909";
+  let apiURL = "https://api.openweathermap.org/data/2.5/onecall?lat=";
+  axios.get(
+    apiURL + lat + "&lon=" + lon + "&exclude=hourly,daily&appid=" + apiKey
+  );
 }
 let city = "Santa Barbara";
 getResponse(city);
