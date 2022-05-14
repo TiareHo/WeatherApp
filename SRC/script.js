@@ -82,24 +82,48 @@ function showWeather(response) {
   getForecast(response.data.coord);
 }
 
+function formatForecastDate(timestamp) {
+  let date = new Date(timestamp * 1000);
+  let day = date.getDay();
+  let days = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friyay!",
+    "Saturday",
+  ];
+  return days[day];
+}
+
 function showForecast(response) {
   let forecast = document.querySelector("#future-conditions-javascript");
   let forecastHTML = `<h3> CRYSTAL BALL READINGS </h3> <div class="row future-conditions">`;
-  let days = ["TODAY", "TOMORROW", "NEXT DAY", "WHATEVER"];
-  days.forEach(function (day) {
-    forecastHTML =
-      forecastHTML +
-      `<div class="sm col-3">
-        <div class="forecast-day"> ${day} </div>
+  let days = response.data.daily;
+
+  days.forEach(function (days, index) {
+    if ((index > 0) & (index < 5)) {
+      forecastHTML =
+        forecastHTML +
+        `<div class="sm col-3">
+        <div class="forecast-day"> ${formatForecastDate(days.dt)} </div>
            <img
-             src="https://ssl.gstatic.com/onebox/weather/48/sunny.png"
+             src= "http://openweathermap.org/img/wn/${
+               days.weather[0].icon
+             }@2x.png"
               alt="weather image"
              />
              <div id="future-temps">
-              <span id="future-temp-high"> 68°F | </span><span id-"future-temp-low">39°F </span>
+              <span id="future-temp-high"> ${Math.round(
+                days.temp.max
+              )}°F | </span><span id-"future-temp-low">${Math.round(
+          days.temp.min
+        )}°F </span>
         </div>     
      </div>         
 `;
+    }
   });
   forecastHTML = forecastHTML + `</div>`;
   forecast.innerHTML = forecastHTML;
@@ -114,7 +138,15 @@ function getForecast(coord) {
   let apiKey = "398e05bad3172be5f1fd3b3b7b027909";
   let apiURL = "https://api.openweathermap.org/data/2.5/onecall?lat=";
   axios
-    .get(apiURL + lat + "&lon=" + lon + "&exclude=hourly&appid=" + apiKey)
+    .get(
+      apiURL +
+        lat +
+        "&lon=" +
+        lon +
+        "&exclude=hourly&appid=" +
+        apiKey +
+        "&units=imperial"
+    )
     .then(showForecast);
 }
 let city = "Santa Barbara";
