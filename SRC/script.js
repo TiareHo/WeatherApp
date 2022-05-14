@@ -127,14 +127,12 @@ function showForecast(response) {
   });
   forecastHTML = forecastHTML + `</div>`;
   forecast.innerHTML = forecastHTML;
-  console.log(response.data);
 }
 
 function getForecast(coord) {
   let lat = coord.lat;
   let lon = coord.lon;
 
-  console.log(lon + "," + lat);
   let apiKey = "398e05bad3172be5f1fd3b3b7b027909";
   let apiURL = "https://api.openweathermap.org/data/2.5/onecall?lat=";
   axios
@@ -149,6 +147,7 @@ function getForecast(coord) {
     )
     .then(showForecast);
 }
+
 let city = "Santa Barbara";
 getResponse(city);
 // glistens for user input to begin function response chain
