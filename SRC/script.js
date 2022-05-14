@@ -36,8 +36,7 @@ function getResponse(city) {
   //city needs to be input value from user?
   axios
     .get(apiUrl + city + "&appid=" + apiKey + "&units=imperial")
-    .then(showWeather)
-    .then(showForecast);
+    .then(showWeather);
 }
 
 function showWeather(response) {
@@ -83,7 +82,7 @@ function showWeather(response) {
   getForecast(response.data.coord);
 }
 
-function showForecast() {
+function showForecast(response) {
   let forecast = document.querySelector("#future-conditions-javascript");
   let forecastHTML = `<h3> CRYSTAL BALL READINGS </h3> <div class="row future-conditions">`;
   let days = ["TODAY", "TOMORROW", "NEXT DAY", "WHATEVER"];
@@ -104,6 +103,7 @@ function showForecast() {
   });
   forecastHTML = forecastHTML + `</div>`;
   forecast.innerHTML = forecastHTML;
+  console.log(response.data);
 }
 
 function getForecast(coord) {
@@ -113,9 +113,9 @@ function getForecast(coord) {
   console.log(lon + "," + lat);
   let apiKey = "398e05bad3172be5f1fd3b3b7b027909";
   let apiURL = "https://api.openweathermap.org/data/2.5/onecall?lat=";
-  axios.get(
-    apiURL + lat + "&lon=" + lon + "&exclude=hourly,daily&appid=" + apiKey
-  );
+  axios
+    .get(apiURL + lat + "&lon=" + lon + "&exclude=hourly&appid=" + apiKey)
+    .then(showForecast);
 }
 let city = "Santa Barbara";
 getResponse(city);

@@ -2,7 +2,7 @@ h1,
 h2,
 h3,
 h4 {
-  margin: 15px 0px 5px 5px;
+  margin: 20px 0px 5px 5px;
   font-size: 150%;
   font-weight: 200;
   letter-spacing: 5px;
@@ -24,7 +24,7 @@ h4 {
   border-width: 3px;
   transition: ease-in-out 400ms;
   color: rgb(95, 158, 160);
-  border-color: aquamarine;
+  border-color: rgb(159, 233, 243);
 }
 
 #date-now,
@@ -33,12 +33,12 @@ h4 {
   font-weight: 600;
   color: rgb(255, 251, 251);
   text-transform: uppercase;
-  margin-left: -20%;
+
   text-align: center;
 }
 #bgimg {
   display: block;
-  margin: 0px 0px 0px 160px;
+  margin-left: 40%;
 }
 .btn {
   border-radius: 5px;
@@ -90,11 +90,11 @@ h4 {
   top: -50px;
 }
 
-.container,
-.wave-graph {
+.container {
   max-width: 600px;
-  margin-left: 8%;
+  width: 100%;
 }
+
 .current-conditions,
 .buoy {
   border-color: cadetblue;
