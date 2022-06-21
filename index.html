@@ -50,7 +50,7 @@
               </form>
                
             </div>
-            <div class="col-7">
+            <div class="col-sm">
               <table class="table">
                 <tbody>
                     <tr>
@@ -65,17 +65,21 @@
                     <td class="marker" scope="row">Stickiness:</td>
                     <td class="figure" id="humidity">  %</td>
                   </tr>
+                    <tr class="current-temp-small">
+                    <td class="marker" scope="row">Current Temp:</td>
+                    <td class="figure" id="tempNowSmall"> °f</td>
+                  </tr>
                 </tbody>
               </table>       
            </div>
-               <span class="col-5 current-temp"
+               <span class="col-5 current-temp d-md-block d-none mt-3"
               ><span class="temp-number" id="tempNow">D</span
               ><span class="current-temp-units">°F</span>  
                <div id="cloud">Current Skies</div> 
         </div>
      </div>
 </div>
-     <div id="future-conditions-javascript">  ...
+     <div id="future-conditions-javascript" class="d-md-block d-none">  ...
 
      </div>
 <h3>Testing Mode: HARVEST BUOY </h3>

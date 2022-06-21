@@ -51,6 +51,9 @@ function showWeather(response) {
   let currentTemp = Math.round(response.data.main.temp);
   let tempNow = document.querySelector("#tempNow");
 
+  let currentTempSmall = Math.round(response.data.main.temp);
+  let tempNowSmall = document.querySelector("#tempNowSmall");
+
   let minTemp = Math.round(response.data.main.temp_min);
   let minNow = document.querySelector("#min-temp");
 
@@ -71,6 +74,7 @@ function showWeather(response) {
   );
   icon.setAttribute("alt", response.data.weather[0].main);
   tempNow.innerHTML = currentTemp;
+  tempNowSmall.innerHTML = currentTempSmall + "°f";
   minNow.innerHTML = minTemp;
   document.querySelector("#max-temp").innerHTML = Math.round(
     response.data.main.temp_max
